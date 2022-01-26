@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<MPD
+    type="dynamic"
+    xmlns="urn:mpeg:dash:schema:mpd:2011"
+    availabilityStartTime="2022-01-26T04:35:57Z"
+    publishTime="2022-01-26T04:36:31Z"
+    minimumUpdatePeriod="PT5S"
+    minBufferTime="PT5S"
+    timeShiftBufferDepth="PT21S"
+    profiles="urn:hbbtv:dash:profile:isoff-live:2012,urn:mpeg:dash:profile:isoff-live:2011"
+    xmlns:xsi="http://www.w3.org/2011/XMLSchema-instance"
+    xsi:schemaLocation="urn:mpeg:DASH:schema:MPD:2011 DASH-MPD.xsd">
+  <Period start="PT0S" id="dash">
+    <AdaptationSet
+        id="1"
+        segmentAlignment="true"
+        maxWidth="852"
+        maxHeight="480"
+        maxFrameRate="60">
+      <Representation
+          id="test_H264"
+          mimeType="video/mp4"
+          codecs="avc1.64001f"
+          width="852"
+          height="480"
+          frameRate="60"
+          startWithSAP="1"
+          bandwidth="1888000">
+        <SegmentTemplate
+            timescale="1000"
+            media="test-$Time$.m4v"
+            initialization="test-init.m4v">
+          <SegmentTimeline>
+             <S t="0" d="8333"/>
+             <S t="8333" d="8333"/>
+             <S t="16666" d="8333"/>
+             <S t="24999" d="8334"/>
+          </SegmentTimeline>
+        </SegmentTemplate>
+      </Representation>
+    </AdaptationSet>
+    <AdaptationSet
+        id="2"
+        segmentAlignment="true">
+      <AudioChannelConfiguration
+          schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011"
+          value="1"/>
+      <Representation
+          id="test_AAC"
+          mimeType="audio/mp4"
+          codecs="mp4a.40.2"
+          audioSamplingRate="48000"
+          startWithSAP="1"
+          bandwidth="160000">
+        <SegmentTemplate
+            timescale="1000"
+            media="test-$Time$.m4a"
+            initialization="test-init.m4a">
+          <SegmentTimeline>
+             <S t="0" d="8333"/>
+             <S t="8333" d="8333"/>
+             <S t="16666" d="8333"/>
+             <S t="24999" d="8334"/>
+          </SegmentTimeline>
+        </SegmentTemplate>
+      </Representation>
+    </AdaptationSet>
+  </Period>
+</MPD>
